@@ -69,7 +69,7 @@ class StudentServiceTest {
 
         when(studentRepository.findByGender(GenderType.MALE)).thenReturn(Arrays.asList(returnStudent));
 
-        List<Student> result = studentService.findAllStudentsWithGender(GenderType.MALE);
+        List<Student> result = studentService.findAllStudentsWithGender("男");
 
         assertEquals(Arrays.asList(expectedStudent), result);
     }

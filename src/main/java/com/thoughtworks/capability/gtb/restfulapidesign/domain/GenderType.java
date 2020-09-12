@@ -15,4 +15,10 @@ public enum GenderType {
     public String getGender() {
         return this.gender;
     }
+
+    public static GenderType getGenderType(String gender) {
+        if (gender.equals("男")) return GenderType.MALE;
+        return GenderType.FEMALE;
+    }
+
 }

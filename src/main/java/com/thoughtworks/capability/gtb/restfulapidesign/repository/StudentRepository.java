@@ -27,4 +27,8 @@ public class StudentRepository {
                 .filter( f -> f.getGender() == gender )
                 .collect(Collectors.toList());
     }
+
+    public void deleteAll() {
+        this.studentDataSource.clear();
+    }
 }

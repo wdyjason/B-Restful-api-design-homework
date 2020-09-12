@@ -23,10 +23,10 @@ public class StudentService {
         studentRepository.save(student);
     }
 
-    public List<Student> findAllStudentsWithGender(GenderType gender) {
+    public List<Student> findAllStudentsWithGender(String gender) {
         if (gender == null) {
             return studentRepository.findAll();
         }
-        return studentRepository.findByGender(gender);
+        return studentRepository.findByGender(GenderType.getGenderType(gender));
     }
 }
