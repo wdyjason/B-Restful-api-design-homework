@@ -39,4 +39,10 @@ public class StudentService {
         }
         throw new StudentNotFoundException("this student id not exist!");
     }
+
+    public void updateStudent(Student receiveStudent) throws StudentNotFoundException {
+        if (!studentRepository.updateStudent(receiveStudent)) {
+            throw new StudentNotFoundException("this student id not exist!");
+        }
+    }
 }

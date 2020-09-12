@@ -96,5 +96,24 @@ class StudentServiceTest {
         assertThrows(StudentNotFoundException.class, () -> studentService.getAStudent(123));
     }
 
+    @Test
+    public void shouldUpdateStudentSuccessfully() throws Exception {
+        Student receiveStudent = genStudent();
 
+        when(studentRepository.updateStudent(receiveStudent)).thenReturn(true);
+        studentService.updateStudent(receiveStudent);
+
+        verify(studentRepository, times(1)).updateStudent(receiveStudent);
+
+    }
+
+    @Test
+    public void shouldUpdateStudentFailure() throws Exception {
+        Student receiveStudent = genStudent();
+
+        when(studentRepository.updateStudent(receiveStudent)).thenReturn(false);
+
+        assertThrows(StudentNotFoundException.class, () -> studentService.updateStudent(receiveStudent));
+
+    }
 }

@@ -39,4 +39,15 @@ public class StudentRepository {
         }
         return Optional.empty();
     }
+
+    public boolean updateStudent(Student updateStudent) {
+       for (int i = 0; i < this.studentDataSource.size(); i ++) {
+           if (this.studentDataSource.get(i).getId().equals(updateStudent.getId())) {
+               this.studentDataSource.remove(i);
+               this.studentDataSource.add(i, updateStudent);
+               return true;
+           }
+       }
+       return false;
+    }
 }
