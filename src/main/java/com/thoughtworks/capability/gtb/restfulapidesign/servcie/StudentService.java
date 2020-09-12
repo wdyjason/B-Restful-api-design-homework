@@ -1,5 +1,6 @@
 package com.thoughtworks.capability.gtb.restfulapidesign.servcie;
 
+import com.thoughtworks.capability.gtb.restfulapidesign.domain.GenderType;
 import com.thoughtworks.capability.gtb.restfulapidesign.domain.Student;
 import com.thoughtworks.capability.gtb.restfulapidesign.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,10 @@ public class StudentService {
         studentRepository.save(student);
     }
 
-    public List<Student> findAllStudents() {
-        return studentRepository.findAll();
+    public List<Student> findAllStudentsWithGender(GenderType gender) {
+        if (gender == null) {
+            return studentRepository.findAll();
+        }
+        return studentRepository.findByGender(gender);
     }
 }

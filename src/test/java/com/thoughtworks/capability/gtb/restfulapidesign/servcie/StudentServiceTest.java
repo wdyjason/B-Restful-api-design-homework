@@ -57,7 +57,19 @@ class StudentServiceTest {
 
         when(studentRepository.findAll()).thenReturn(Arrays.asList(returnStudent));
 
-        List<Student> result = studentService.findAllStudents();
+        List<Student> result = studentService.findAllStudentsWithGender(null);
+
+        assertEquals(Arrays.asList(expectedStudent), result);
+    }
+
+    @Test
+    public void shouldGetMaleStudentsSuccess() {
+        Student returnStudent = genStudent();
+        Student expectedStudent = genStudent();
+
+        when(studentRepository.findByGender(GenderType.MALE)).thenReturn(Arrays.asList(returnStudent));
+
+        List<Student> result = studentService.findAllStudentsWithGender(GenderType.MALE);
 
         assertEquals(Arrays.asList(expectedStudent), result);
     }
