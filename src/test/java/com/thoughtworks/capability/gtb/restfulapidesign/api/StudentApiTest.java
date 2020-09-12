@@ -86,4 +86,15 @@ class StudentApiTest {
                 .andExpect(status().isOk());
     }
 
+    @Test
+    public void shouldUpdateStudentSuccessfully() throws Exception {
+        String updateString = "{\"id\": \"1\", \"name\": \"test_c\", \"gender\": \"女\", \"note\": \"des\"}";
+        mockMvc.perform(put("/students/").content(updateString).contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+
+        Student result= studentRepository.findById(1).get();
+        Student expectedStudent = new Student(1, "test_c", GenderType.FEMALE, "des");
+        assertEquals(expectedStudent, result);
+    }
+
 }

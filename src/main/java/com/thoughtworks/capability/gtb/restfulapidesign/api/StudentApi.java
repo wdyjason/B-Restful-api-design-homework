@@ -31,4 +31,9 @@ public class StudentApi {
     public Student getAStudent(@PathVariable Integer id) throws StudentNotFoundException {
         return studentService.getAStudent(id);
     }
+
+    @PutMapping("/students")
+    public void updateStudent(@RequestBody Student updateStudent) throws StudentNotFoundException {
+        studentService.updateStudent(updateStudent);
+    }
 }
