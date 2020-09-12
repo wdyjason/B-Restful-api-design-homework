@@ -9,6 +9,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -45,6 +48,18 @@ class StudentServiceTest {
 
         verify(studentRepository, times(1)).save(student);
 
+    }
+
+    @Test
+    public void shouldGetAllStudentsSuccess() {
+        Student returnStudent = genStudent();
+        Student expectedStudent = genStudent();
+
+        when(studentRepository.findAll()).thenReturn(Arrays.asList(returnStudent));
+
+        List<Student> result = studentService.findAllStudents();
+
+        assertEquals(Arrays.asList(expectedStudent), result);
     }
 
 

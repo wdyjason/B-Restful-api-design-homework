@@ -15,4 +15,8 @@ public class StudentRepository {
         this.studentDataSource.add(student);
         return student;
     }
+
+    public List<Student> findAll() {
+        return this.studentDataSource;
+    }
 }
