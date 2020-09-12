@@ -2,6 +2,7 @@ package com.thoughtworks.capability.gtb.restfulapidesign.servcie;
 
 import com.thoughtworks.capability.gtb.restfulapidesign.domain.GenderType;
 import com.thoughtworks.capability.gtb.restfulapidesign.domain.Student;
+import com.thoughtworks.capability.gtb.restfulapidesign.excepiton.DeleteFailureException;
 import com.thoughtworks.capability.gtb.restfulapidesign.excepiton.StudentNotFoundException;
 import com.thoughtworks.capability.gtb.restfulapidesign.repository.StudentRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -115,5 +116,12 @@ class StudentServiceTest {
 
         assertThrows(StudentNotFoundException.class, () -> studentService.updateStudent(receiveStudent));
 
+    }
+
+    @Test
+    public void shouldDeleteStudentsSuccess() throws Exception {
+        when(studentRepository.deleteOneById(1)).thenReturn(true);
+        studentService.deleteById(1);
+        verify(studentRepository, times(1)).deleteOneById(1);
     }
 }

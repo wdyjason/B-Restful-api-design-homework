@@ -50,4 +50,14 @@ public class StudentRepository {
        }
        return false;
     }
+
+    public boolean deleteOneById(int id) {
+        for (Student student : this.studentDataSource) {
+            if (student.getId() == id) {
+                this.studentDataSource.remove(student);
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -2,6 +2,7 @@ package com.thoughtworks.capability.gtb.restfulapidesign.servcie;
 
 import com.thoughtworks.capability.gtb.restfulapidesign.domain.GenderType;
 import com.thoughtworks.capability.gtb.restfulapidesign.domain.Student;
+import com.thoughtworks.capability.gtb.restfulapidesign.excepiton.DeleteFailureException;
 import com.thoughtworks.capability.gtb.restfulapidesign.excepiton.StudentNotFoundException;
 import com.thoughtworks.capability.gtb.restfulapidesign.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,12 @@ public class StudentService {
     public void updateStudent(Student receiveStudent) throws StudentNotFoundException {
         if (!studentRepository.updateStudent(receiveStudent)) {
             throw new StudentNotFoundException("this student id not exist!");
+        }
+    }
+
+    public void deleteById(int id) throws DeleteFailureException {
+        if (!studentRepository.deleteOneById(id)) {
+            throw new DeleteFailureException("this student id not exist!");
         }
     }
 }
