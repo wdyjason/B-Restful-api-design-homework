@@ -76,4 +76,14 @@ class StudentApiTest {
                 .andExpect(status().isOk());
     }
 
+    @Test
+    public void shouldGetStudentsByIdSuccessfully() throws Exception {
+        mockMvc.perform(get("/students/1"))
+                .andExpect(jsonPath("$.id", is(1)))
+                .andExpect(jsonPath("$.gender", is("男")))
+                .andExpect(jsonPath("$.name", is("test")))
+                .andExpect(jsonPath("$.note", is("note")))
+                .andExpect(status().isOk());
+    }
+
 }
