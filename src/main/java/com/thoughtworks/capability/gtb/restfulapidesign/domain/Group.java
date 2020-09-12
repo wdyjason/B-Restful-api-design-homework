@@ -20,4 +20,9 @@ public class Group {
     private String note;
 
     private List<Student> studentList;
+
+    public Group(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 }
