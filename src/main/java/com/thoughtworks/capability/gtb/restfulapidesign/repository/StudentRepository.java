@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Repository
@@ -30,5 +31,12 @@ public class StudentRepository {
 
     public void deleteAll() {
         this.studentDataSource.clear();
+    }
+
+    public Optional<Student> findById(int id) {
+        for (Student student : this.studentDataSource) {
+            if (student.getId() == id) return Optional.of(student);
+        }
+        return Optional.empty();
     }
 }
