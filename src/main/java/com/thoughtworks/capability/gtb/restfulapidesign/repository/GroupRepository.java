@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static com.thoughtworks.capability.gtb.restfulapidesign.constants.GroupConstants.GROUP_COUNT;
 import static com.thoughtworks.capability.gtb.restfulapidesign.constants.GroupConstants.GROUP_NAMES;
@@ -27,5 +28,24 @@ public class GroupRepository {
 
     public List<Group> getAllGroups() {
         return this.groupsDataSource;
+    }
+
+    public Optional<Group> findById(int id) {
+        for (Group group : this.groupsDataSource) {
+            if (group.getId().equals(id)) {
+                return Optional.of(group);
+            }
+        }
+        return Optional.empty();
+    }
+
+    public boolean updateGroupNameById(int id, String newName) {
+        for (Group group : this.groupsDataSource) {
+            if (group.getId().equals(id)) {
+                group.setName(newName);
+                return true;
+            }
+        }
+        return false;
     }
 }
