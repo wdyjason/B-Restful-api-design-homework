@@ -97,4 +97,11 @@ class StudentApiTest {
         assertEquals(expectedStudent, result);
     }
 
+    @Test
+    public void shouldDeleteStudentsSuccess() throws Exception {
+        mockMvc.perform(delete("/students/1"))
+                .andExpect(status().isOk());
+        assertEquals(1, studentRepository.findAll().size());
+    }
+
 }

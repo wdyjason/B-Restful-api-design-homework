@@ -2,6 +2,7 @@ package com.thoughtworks.capability.gtb.restfulapidesign.api;
 
 import com.thoughtworks.capability.gtb.restfulapidesign.domain.GenderType;
 import com.thoughtworks.capability.gtb.restfulapidesign.domain.Student;
+import com.thoughtworks.capability.gtb.restfulapidesign.excepiton.DeleteFailureException;
 import com.thoughtworks.capability.gtb.restfulapidesign.excepiton.StudentNotFoundException;
 import com.thoughtworks.capability.gtb.restfulapidesign.servcie.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,5 +36,10 @@ public class StudentApi {
     @PutMapping("/students")
     public void updateStudent(@RequestBody Student updateStudent) throws StudentNotFoundException {
         studentService.updateStudent(updateStudent);
+    }
+
+    @DeleteMapping("/students/{id}")
+    public void deleteStudent(@PathVariable Integer id) throws DeleteFailureException {
+        studentService.deleteById(id);
     }
 }
