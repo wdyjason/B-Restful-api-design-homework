@@ -24,4 +24,8 @@ public class GroupRepository {
             groupsDataSource.add(new Group(i, GROUP_NAMES.get(i)));
         }
     }
+
+    public List<Group> getAllGroups() {
+        return this.groupsDataSource;
+    }
 }

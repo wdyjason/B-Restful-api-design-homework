@@ -40,4 +40,7 @@ public class GroupService {
     }
 
 
+    public List<Group> getAllGroups() {
+        return groupRepository.getAllGroups();
+    }
 }
