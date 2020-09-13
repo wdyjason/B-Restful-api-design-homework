@@ -14,7 +14,7 @@ import static com.thoughtworks.capability.gtb.restfulapidesign.constants.GroupCo
 public class GroupRepository {
     private final List<Group> groupsDataSource = new ArrayList<>();
     public List<Group> getGroups() {
-        if (groupsDataSource.isEmpty()) {
+        if (this.groupsDataSource.isEmpty()) {
             initGroupDataSource();
         }
         return this.groupsDataSource;
@@ -27,6 +27,9 @@ public class GroupRepository {
     }
 
     public List<Group> getAllGroups() {
+        if (this.groupsDataSource.isEmpty()) {
+            initGroupDataSource();
+        }
         return this.groupsDataSource;
     }
 
